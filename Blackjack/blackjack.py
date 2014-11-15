@@ -6,8 +6,8 @@ from deck_of_cards import Deck
 from button import Button
 
 def card(anchor, value):
-    # Returns a pathname and image file equal to 'value'
-    return Image(anchor, '{0}{1}cards{1}{3}.png'.format(os.getcwd(),os.sep,value))
+    # Returns an image file equal to 'value'
+    return Image(anchor, '{0}{1}cards{1}{2}.png'.format(os.getcwd(),os.sep,value))
 
 def ai_turn(hand):
     # Evaulates the ai's hand to determine if more cards need be drawn
