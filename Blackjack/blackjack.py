@@ -1,13 +1,17 @@
-# main.py
+#! /usr/bin/env python
+# blackjack.py
 
-import random, os
+import random
+import os
 from graphics import *
 from deck_of_cards import Deck
 from button import Button
 
+
 def card(anchor, value):
     # Returns an image file equal to 'value'
     return Image(anchor, '{0}{1}cards{1}{2}.png'.format(os.getcwd(),os.sep,value))
+
 
 def ai_turn(hand):
     # Evaulates the ai's hand to determine if more cards need be drawn
@@ -30,6 +34,7 @@ def ai_turn(hand):
         return True
     else:
         return False
+
 
 def check_scores(player, ai):
     # set variables
@@ -66,6 +71,7 @@ def check_scores(player, ai):
     # Return scores to be evaluated and check who won
     return p_score, ai_score
 
+
 def check_win(player_score, ai_score):
     # Checks who won based on player and ai scores, then returns a string to declare the winner
     if player_score <= 21 and player_score > ai_score or player_score <= 21 and ai_score > 21:
@@ -77,6 +83,7 @@ def check_win(player_score, ai_score):
     else:
         if ai_score <= 21 and ai_score > player_score or ai_score <= 21 and player_score > 21:
             return 'Computer Wins!'
+
 
 def game_loop(win):
     # Cretae Deck Object and anchor points for cards and buttons
@@ -142,6 +149,7 @@ def game_loop(win):
             p = win.getMouse()
     # Close the window once 'Quit' has been pressed.
     win.close()
+
 
 def main():
     # Create a graphics window, set coordinates, set the background image, and run the game loop
