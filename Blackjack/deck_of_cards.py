@@ -3,6 +3,7 @@
 
 import random
 
+
 class Deck:
     """This class contains a list of strings relating to card values
     (e.g. 1S = Ace of Spades, 13D = King of Diamonds). Functions in the class
