@@ -36,7 +36,7 @@ class Deck:
             if location == int(location) and 0 <= location < self.count():
                 return self.cards[location]
             else:
-                return None
+                return 
 
 
     def discard_one(self):
@@ -67,3 +67,4 @@ class Deck:
             '1H', '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '10H', '11H', '12H', '13H',
             '1D', '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '10D', '11D', '12D', '13D'
         ]
+
