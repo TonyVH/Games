@@ -4,8 +4,8 @@
 import random
 import os
 from graphics import *
-from deck import Deck
-from button import Button
+from Deck import Deck
+from Button import Button
 
 
 def card(anchor, value):
