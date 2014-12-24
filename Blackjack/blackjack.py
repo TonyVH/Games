@@ -10,37 +10,52 @@ from Score import Score
 
 """
     ***Will be refactoring the the main game loop to make it 
-    more readable and maintainable***
+    more readable and maintainable. Not currently in working 
+    condition.***
 """
 
 def card(anchor, value):
     # Returns an image file equal to 'value'
     return Image(anchor, "{0}{1}cards{1}{2}.png".format(os.getcwd(),os.sep,value))
 
+
+
 def game_loop(win):
+
+
     # Cretae Deck Object and anchor points for cards and buttons
     deck = Deck()
     score = Score()
     anchor1 = [Point(4,4), Point(4.25,4), Point(4.5,4), Point(4.75,4), Point(5,4), Point(5.25,4), Point(5.5,4), Point(5.75,4), Point(6,4), Point(6.25,4)]
     anchor2 = [Point(4,7.5), Point(4.25,7.5), Point(4.5,7.5), Point(4.75,7.5), Point(5,7.5), Point(5.25,7.5), Point(5.5,7.5), Point(5.75,7.5), Point(6,7.5), Point(6.25,7.5)]
     anchor3 = [(3,9.5,"Shuffle"), (4,9.5,"Deal"), (5,9.5,"Hit"), (6,9.5,"Stay"), (7,9.5,"Reveal"), (9.5,0.5,"Quit")]
+
+
     # Create buttons
     buttons = []
     for (x,y,label) in anchor3:
         buttons.append(Button(win,Point(x,y),.75,.75,label))
     for b in buttons:
         b.activate()
+
+
     # Create lists to contain cards for player and ai
     player_hand = []
     ai_hand = []
+
+
     # Quit (continuously loops through the game while the quit button has not been pressed)
     p = win.getMouse()
     while not buttons[5].clicked(p):
+
+
         # Shuffle
         if buttons[0].clicked(p):
             deck.shuffle()
             card(Point(8,5.75), "rbv").draw(win)
             p = win.getMouse()
+
+
         # Deal Hand (deal two cards to the player and ai)
         elif buttons[1].clicked(p):
             # Deal player hand
@@ -56,17 +71,23 @@ def game_loop(win):
             ai_hand.append(deck.deal_one())
             card(anchor2[1], ai_hand[1]).draw(win)
             p = win.getMouse()
+
+
         # Hit (draw a card)
         elif buttons[2].clicked(p):
             player_hand.append(deck.deal_one())
             card(anchor1[len(player_hand)-1], player_hand[-1]).draw(win)
             p = win.getMouse()
+
+
         # Stay (ai's hand is assessed; cards are drawn if necessary)
         elif buttons[3].clicked(p):
             while ai_turn(ai_hand):
                 ai_hand.append(deck.deal_one())
                 card(anchor2[len(ai_hand)-1], ai_hand[-1]).draw(win)
             p = win.getMouse()
+
+
         # Reveal (determine the winner)
         elif buttons[4].clicked(p):
             cover.undraw()
@@ -79,6 +100,8 @@ def game_loop(win):
             text.setTextColor("gold")
             text.draw(win)
             p = win.getMouse()
+
+
         else:
             p = win.getMouse()
     # Close the window once 'Quit' has been pressed.
