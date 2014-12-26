@@ -2,11 +2,11 @@
 
 class Score:
     """
-        This class contains various functions to calculate scores,
-        and determine the winner of a blackjack game.
+        Class to calculate scores and determine the outcome
+        of a game of blackjack. 
     """
 
-    def determineScore(self, hand):
+    def calculateScore(self, hand):
         "Takes an int array as an arguement, returns the blackjack value of the hand"
         score = 0
         aces = 0
@@ -21,23 +21,15 @@ class Score:
             aces -= 1
         return score
 
-    def determineWinner(self, p_score, ai_score):
-        "Checks who won based on player and ai scores, then returns a string to declare the winner"
-        if self._playerWins(p_score, ai_score):
-            return "You Win!"
-        elif self._draw(p_score, ai_score):
-            return "Draw"
-        elif self._bothBusted(p_score, ai_score):
-            return "You both busted!"
-        else:
-            return "Computer Wins!"
+    def playerWins(self, player, ai):
+        "Boolean return type"
+        return 21 >= player > ai or player <= 21 < ai
 
-    def _playerWins(self, p, a):
-        return 21 >= p > a or p <= 21 < a
+    def draw(self, player, ai):
+        "Boolean return type"
+        return 21 >= player == ai
 
-    def _draw(self, p, a):
-        return 21 >= p == a
-
-    def _bothBusted(self, p, a):
-        return p > 21 < a
+    def bothBusted(self, player, ai):
+        "Boolean return type"
+        return player > 21 < ai
 
