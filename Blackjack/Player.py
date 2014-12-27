@@ -21,6 +21,9 @@ class Player:
         "Returns contents of hand array"
         return self.hand
 
+    def getCard(self, index):
+        return self.hand[index]
+
     def getX(self):
         "Returns X instance variable"
         return self.X, self.Y
