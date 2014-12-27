@@ -2,9 +2,7 @@
 
 import os
 import random
-from graphics import *
 from Deck import Deck
-from Button import Button
 from Score import Score
 from Player import Player
 
