@@ -1,6 +1,6 @@
 # Deck.py
 
-from random import randrange
+import random 
 
 class Deck:
     """
@@ -33,7 +33,7 @@ class Deck:
 
     def drawRandom(self):
         "Returns and removes a random card from the deck list"
-        return self.cards.pop(randrange(len(self.cards)))
+        return self.cards.pop(random.randrange(len(self.cards)))
 
     def getCardValue(self, card):
         "Returns the int value of a card (e.g. '2D' to 2)"

@@ -3,9 +3,7 @@
 import os
 
 class Player:
-    """
-        
-    """
+
     def __init__(self, name, X, Y):
         "Initiate instance vairables: name, hand, X, and Y"
         self.name = name
@@ -73,7 +71,3 @@ class Player:
 
     def _writeToFile(self, outFile, wins, losses, draws):
         print("Wins: {0}\nLosses: {1}\nDraws: {2}".format(wins, losses, draws), file=outFile)
-
-
-if __name__ == "__main__":
-    # Test code here:

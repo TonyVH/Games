@@ -1,8 +1,8 @@
 # Blackjack.py
 
 import os
+import random
 from graphics import *
-from Random import randrange
 from Deck import Deck
 from Button import Button
 from Score import Score
@@ -33,13 +33,13 @@ class Blackjack:
         self._aiTurn()
 
     def reveal(self):
-        if self.score.playerWins(player.score, ai.score):
+        if self.score.playerWins(self.player.score, self.ai.score):
             self.player.updateHighScore(wins=1)
             return "{0} is the winner!".format(self.player.name)
-        elif self.score.draw(self.score, ai.score):
+        elif self.score.draw(self.player.score, self.ai.score):
             self.player.updateHighScore(draws=1)
             return "Draw"
-        elif self.score.bothBusted(self.player, self.ai):
+        elif self.score.bothBusted(self.player.score, self.ai.score):
             return "You both busted!"
         else:
             self.player.updateHighScore(losses=1)
@@ -63,11 +63,3 @@ class Blackjack:
         while self.ai.score < 17:
             self._deal(self.ai)
             self._updateScore(self.ai)
-
-if __name__ == "__main__":
-    p = Player("Tony", 1, 1)
-    ai = Player("ai", 2, 2)
-    d = Deck()
-    s = Score()
-    b = Blackjack(p, ai, d, s)
-    # test code here
