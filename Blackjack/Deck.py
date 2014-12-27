@@ -22,7 +22,7 @@ class Deck:
         "Randomly shuffle the deck list"
         random.shuffle(self.cards)
 
-    def drawCard(self):
+    def dealCard(self):
         "Returns and removes the last card in the deck list"
         return self.cards.pop()
 

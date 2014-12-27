@@ -10,20 +10,26 @@ class Player:
         "Initiate instance vairables: name, hand, X, and Y"
         self.name = name
         self.hand = []
+        self.cardValues = []
+        self.score = 0
         self.X = X  # Player specific x-axis instance variable
         self.Y = Y  # Player specific y-axis instance variable
 
-    def getCard(self, card):
+    def drawCard(self, card):
         "Adds a card to hand array"
         self.hand.append(card)
 
-    def hand(self):
+    def getHand(self):
         "Returns contents of hand array"
         return self.hand
 
-    def XY(self):
-        "Returns X and Y instance variable"
+    def getX(self):
+        "Returns X instance variable"
         return self.X, self.Y
+
+    def getY(self):
+        "Returns Y instance variable"
+        return self.Y
 
     def updateX(self, default=.25):
         "Update X instance variable - default set to .25"
@@ -36,17 +42,10 @@ class Player:
     def resetPlayer(self, X, Y):
         "Resets instance variables to start a new game"
         self.hand = []
+        self.careValues = []
+        self.score = 0
         self.X = X
         self.Y = Y
-
-    def _getScores(self, inFile, wins, losses, draws):
-        wins += int(inFile.readline()[6:-1])
-        losses += int(inFile.readline()[8:-1])
-        draws += int(inFile.readline()[7:-1])
-        return wins, losses, draws
-
-    def _writeToFile(self, outFile, wins, losses, draws):
-        print("Wins: {0}\nLosses: {1}\nDraws: {2}".format(wins, losses, draws), file=outFile)
 
     def updateHighScore(self, wins=0, losses=0, draws=0):
         "Opens/Creates a file based on player name and records wins, losses, and draws"
@@ -65,6 +64,15 @@ class Player:
             outFile = open(fName, "w")
             self._writeToFile(outFile, wins, losses, draws)
             outFile.close()
+
+    def _getScores(self, inFile, wins, losses, draws):
+        wins += int(inFile.readline()[6:-1])
+        losses += int(inFile.readline()[8:-1])
+        draws += int(inFile.readline()[7:-1])
+        return wins, losses, draws
+
+    def _writeToFile(self, outFile, wins, losses, draws):
+        print("Wins: {0}\nLosses: {1}\nDraws: {2}".format(wins, losses, draws), file=outFile)
 
 
 if __name__ == "__main__":

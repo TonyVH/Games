@@ -32,4 +32,3 @@ class Score:
     def bothBusted(self, player, ai):
         "Boolean return type"
         return player > 21 < ai
-
