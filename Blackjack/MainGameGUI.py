@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# blackjack.py
+# MainGameGUI.py
 
 import random
 import os
@@ -9,11 +9,6 @@ from Button import Button
 from Score import Score
 from Player import Player
 
-"""
-    ***Will be refactoring the the main game loop to make it 
-    more readable and maintainable. Not currently in working 
-    condition.***
-"""
 
 def printCardToScreen(x, y, card):
     return Image(Point(x,y), "{0}{1}cards{1}{2}.png".format(os.getcwd(), os.sep, card))
